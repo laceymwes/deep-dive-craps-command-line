@@ -7,12 +7,12 @@ public class Roll {
   private int[] dice;
   private static Random defaultRng;
 
-  Roll() {
+ public Roll() {
     // TODO Make thread-safe
     this((defaultRng == null) ? defaultRng = new Random() : defaultRng);
   }
 
-  Roll(Random rng) {
+  public Roll(Random rng) {
     dice = new int[]{
         rng.nextInt(6) + 1,
         rng.nextInt(6) + 1
@@ -28,5 +28,10 @@ public class Roll {
 
   public int getSum() {
     return dice[0] + dice[1];
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%d %d", dice[0], dice[1]);
   }
 }
